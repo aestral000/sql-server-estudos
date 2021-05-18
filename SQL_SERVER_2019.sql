@@ -92,3 +92,8 @@ SELECT * FROM produto_venda;
 
 -- soma dos valores dos produtos
 
+SELECT dados_produtos.id_produto ,dados_produtos.nome_produto, dados_produtos.valor_produto, (produto_venda.quantidade_produto * dados_produtos.valor_produto) as total FROM dados_produtos
+INNER JOIN produto_venda
+ON produto_venda.id_produto = dados_produtos.id_produto
+
+
