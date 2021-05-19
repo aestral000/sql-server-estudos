@@ -321,3 +321,4 @@
 @rootticc no instagram
 @rootticc no Twitter
 <a href= "https://www.youtube.com/channel/UCeYIPOirkA7die3wAsttEfw" style="color : black;">Youtube, clique aqui</a>
+"Conhecimento não é algo que devemos guardar para nós"
