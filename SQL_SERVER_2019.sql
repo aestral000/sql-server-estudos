@@ -2,6 +2,8 @@
 
 CREATE DATABASE loja;
 
+USE loja;
+
 --criação das tabelas com as devidas alterações
 CREATE TABLE dados_produtos(
 	id_produto INT PRIMARY KEY IDENTITY(1,1),
