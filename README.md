@@ -216,6 +216,31 @@
 
 	SET @[NOME DA VARIAVEL] = [VALOR DEFAULT]
 
+### Triggers
+	CREATE TRIGGER [NOME TRIGGER] ON [TABELA] AFTER/STEAD OF [ISERT, DELETE, UPDATE] -- Assinatura, podendo adicionar este avento ao AFTER que seria após realizar as mudanças ou INSTEAD OF que seria antes de executar as mudanças no banco.
+	-- Podendo ser chamada nas ações de inserir, remover e atualizar, podendo realizar ações de inserções.
+	AS
+	BEGIN
+	[REGRA DE NEGÓCIO]
+	END -- Triggers servem basicamente para realizar alguma ação quando aconteça alguma alteração em determinada tabela, muito interessante em tabelas de auditoria
+
+### Cursores
+	DECLARE [NOME DA VARIAVEL] INT = 0; -- É necessário declarar um contador para a estrutura de repetição e uma variável que irá receber os valores que o cursor está apontando
+	DECLARE [NOME DA VARIAVEL 2] INT = 0;
+	DECLARE [NOME DO CURSOR] CURSOR
+	FOR SELECT [COLUNA] FROM [TABELA] -- É necessário apontar para qual tabela/coluna ele deve estar
+	OPEN [NOME DO CURSOR] -- é necessário iniciar o cursor, por isso temos que utilizar o OPEN
+	FETCH NEXT FROM [NOME DO CURSOR] INTO [NOME VARIAVEL 2] 
+	WHILE @@FETCH_STATUS = 0 -- Aqui é verificado se o cursos já percorreu todas as linhas
+	BEGIN
+      IF EXISTS(SELECT [COLUNAS] FROM [TABELA] WHERE [COLUNA DA TABELA] = [NOME DA VARIAVEL 2]) 
+            SET [NOME DA VARIAVEL] = [NOME DA VARIAVEL] + 1;
+      FETCH NEXT FROM [NOME DO CURSOR] INTO DECLARE [NOME DA VARIAVEL 2] -- aqui ele basicamente pula de linha e pega o proximo valor
+	END
+	CLOSE [NOME DO CURSOR]
+	DEALLOCATE [NOME DO CURSOR]
+	PRINT 'TOTAL: ' + CAST([NOME DA VARIAVEL] AS NVARCHAR(10));
+
 ### Procedimentos
 
 ##### Como criar
